@@ -1,0 +1,47 @@
+{
+  "bases": {
+    "dist": "dist/",
+    "src": "src/"
+  },
+  "path": {
+    "scripts": [
+        "src/app/**/*module*.js",
+        "src/common/**/*module*.js",
+        "src/app/**/*.js",
+        "src/common/**/*.js"
+    ],
+    "libs": [
+        "bower_components/jquery/dist/jquery.min.js",
+        "bower_components/lodash/lodash.js",
+        "bower_components/angular/angular.js",
+        "bower_components/angular-route/angular-route.js",
+        "bower_components/angular-local-storage/dist/angular-local-storage.js",
+        "bower_components/angular-bootstrap/ui-bootstrap-tpls.js"
+    ],
+    "sass": {
+        "src": [
+            "src/scss/app.scss"
+        ],
+        "watch": [
+            "src/scss/**/*.scss"
+        ],
+        "conf": {
+            "outputStyle": "nested"
+        }
+    },
+    "css_libs": [
+        "bower_components/bootstrap/dist/css/bootstrap.css",
+        "bower_components/font-awesome/css/font-awesome.css"
+    ],
+    "html": [
+        "src/**/*.html",
+        "!src/index.html"
+    ],
+    "copy": [
+        "src/assets/**/*.*"
+    ],
+    "fonts": [
+        "bower_components/font-awesome/fonts/*.*"
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+<div class="modal-header">
+  <h3 class="modal-title">Edit user</h3>
+</div>
+<div class="modal-body">
+  <form class="form-horizontal" name="lotteryForm" novalidate autocomplete="off">
+    <div class="form-group">
+      <label class="col-sm-3" for="email">Email:</label>
+      <div class="col-sm-9">
+        <input class="form-control" id="email" name="email" type="email" ng-model="vm.user.email"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3" for="firstname">First name:</label>
+      <div class="col-sm-9">
+        <input class="form-control" id="firstname" name="firstname" type="text" ng-model="vm.user.firstName"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3" for="lastname">Last name:</label>
+      <div class="col-sm-9">
+        <input class="form-control" id="lastname" name="lastname" type="text" ng-model="vm.user.lastName"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3" for="age">Age:</label>
+      <div class="col-sm-9">
+        <input class="form-control" id="age" name="age" type="number" ng-model="vm.user.age"/>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="vm.save()">OK</button>
+    <button class="btn btn-warning" ng-click="vm.cancel()">Cancel</button>
+</div>

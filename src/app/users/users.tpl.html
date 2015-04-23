@@ -1,0 +1,88 @@
+<div class="header clearfix">
+  <div class="pull-right actions">
+    <button ng-disabled="vm.selectedList.length == 0"
+            ng-click="vm.deleteUsers(vm.selectedList)" 
+            href="javascript:void(0)" 
+            class="btn btn-danger">DELETE</button>
+  </div>
+</div>
+<table class="table table-bordered well"
+       selectable-list="vm.users" 
+       selected-target="vm.selectedList"
+       scroll="vm.getNextPage()"
+       scroll-enabled="!vm.params.paging">
+  <thead>
+    <tr>
+      <th class="col-xs-0_5">
+        <input type="checkbox" 
+               ng-model="checkboxes.checked" 
+               id="select_all" 
+               value=""/>
+      </th>
+      <th ng-repeat="col in vm.columns"
+          ng-class="{
+            'sortable': col.sortable,
+            'sort-asc': vm.params.sorting.field == col.field && vm.params.sorting.descending,
+            'sort-desc': vm.params.sorting.field == col.field && !vm.params.sorting.descending,
+            'col-xs-3': col.field !== 'age',
+            'col-xs-1_5': col.field === 'age',
+          }"
+          ng-click="vm.sort(col.field)">
+        <div>{{col.title}}</div>
+      </th>
+      <th class="col-xs-1"></th>
+    </tr>
+    <tr class="panel panel-default">
+      <th></th>
+      <th ng-repeat="col in vm.columns">
+        <input ng-model="vm.params.filter[col.field]"
+               ng-if="col.filter === 'text'" 
+               type="text" 
+               class="form-control">
+        <select ng-model="vm.params.filterRange[col.field]"
+                ng-if="col.filter === 'select'"
+                ng-options="opt.value as opt.label for opt in vm.ageOptions"
+                class="form-control">
+      </th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="user in vm.users">
+      <td>
+        <input type="checkbox" 
+               ng-model="checkboxes.items[user.id]"/>
+      </td>
+      <td ng-repeat="col in vm.columns">
+        <span ng-if="!user.isEditing">{{ user[col.field] }}</span>
+        <input ng-model="user[col.field]"
+               ng-if="user.isEditing" 
+               type="text"
+               class="form-control">
+      </td>
+      <td>
+        <i ng-if="!user.isEditing" 
+           ng-click="vm.startEdit(user)" 
+           class="fa fa-pencil"></i>
+        <i ng-if="!user.isEditing"
+           ng-click="vm.deleteUsers([user.id])"
+           class="fa fa-trash"></i>
+
+        <i ng-if="user.isEditing"
+           ng-click="vm.save(user)" 
+           class="fa fa-check"></i>
+        <i ng-if="user.isEditing"
+           ng-click="vm.cancelEdit(user)" 
+           class="fa fa-times"></i>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="footer clearfix">
+  <div class="pull-rigth">
+    <pagination total-items="vm.total" 
+                items-per-page="vm.params.limit" 
+                ng-model="vm.params.page" 
+                ng-if="vm.params.paging && vm.total > vm.users.length"></pagination>
+  </div>
+</div>

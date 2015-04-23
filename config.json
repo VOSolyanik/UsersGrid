@@ -6,9 +6,7 @@
   "path": {
     "scripts": [
         "src/app/**/*module*.js",
-        "src/common/**/*module*.js",
-        "src/app/**/*.js",
-        "src/common/**/*.js"
+        "src/app/**/*.js"
     ],
     "libs": [
         "bower_components/jquery/dist/jquery.min.js",

@@ -5,9 +5,9 @@
     .module('app.users')
     .controller('EditUserCtrl', EditUserCtrl);
 
-    EditUserCtrl.$inject = ['$scope', '$modalInstance', 'user'];
+    EditUserCtrl.$inject = ['$modalInstance', 'user'];
 
-    function EditUserCtrl($scope, $modalInstance, user) {
+    function EditUserCtrl($modalInstance, user) {
       var vm = this;
 
       vm.user = user;

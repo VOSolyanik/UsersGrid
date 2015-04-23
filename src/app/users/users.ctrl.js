@@ -56,7 +56,7 @@
         paging: false,     //  true - pagination, false - infinity scroll
         page: 1,
         limit: 10,
-        editMode: 'inline' //  'modal'||'inline'
+        editMode: 'modal' //  'modal'||'inline'
       };
       
       vm.sort = sort;

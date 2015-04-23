@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.services')
+    .module('app.users')
     .factory('Users', Users); 
 
     Users.$inject = ['$q', '$http', '$filter', '_', 'localStorageService'];
@@ -28,8 +28,8 @@
         if(!localStorageService.get('users')){
           $http.get('../users.json')
             .success(function (data) {
-              localStorageService.set('users', data);
               var sortedFilteredUsers = sort(filter(data));
+              localStorageService.set('users', data);
               def.resolve({
                 total: sortedFilteredUsers.length,
                 results: pager(sortedFilteredUsers)
